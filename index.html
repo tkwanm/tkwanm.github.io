@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwandile Mavuso - Data Scientist & Systems Administrator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-light-pink: #ECBAC0;
+            --color-pink: #B25681;
+            --color-purple: #91759C;
+            --color-dark-purple: #31294C;
+            --color-darkest: #0F0924;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--color-darkest);
+            color: var(--color-light-pink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 9, 36, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--color-pink);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--color-light-pink);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            color: var(--color-darkest);
+            background: var(--color-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-darkest) 0%, var(--color-dark-purple) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+            animation: sparkle 3s infinite;
+        }
+
+        .sparkle::before,
+        .sparkle::after {
+            content: '';
+            position: absolute;
+            background: var(--color-light-pink);
+        }
+
+        .sparkle::before {
+            width: 2px;
+            height: 20px;
+            left: 9px;
+        }
+
+        .sparkle::after {
+            width: 20px;
+            height: 2px;
+            top: 9px;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 700;
+            color: var(--color-light-pink);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            text-shadow: 4px 4px 0 var(--color-pink);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h2 {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--color-purple);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--color-pink);
+            color: var(--color-darkest);
+            text-decoration: none;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(178, 86, 129, 0.4);
+        }
+
+        .cta-button:hover {
+            background: var(--color-light-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(178, 86, 129, 0.6);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--color-pink);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--color-dark-purple);
+            padding: 2.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--color-purple);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--color-dark-purple);
+            padding: 2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 3px solid var(--color-purple);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--color-pink);
+            box-shadow: 0 12px 30px rgba(178, 86, 129, 0.4);
+        }
+
+        .skill-category h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--color-pink);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.7rem 0;
+            border-bottom: 2px solid var(--color-purple);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .skill-category li:hover {
+            padding-left: 10px;
+            color: var(--color-pink);
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--color-pink), var(--color-purple));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.2rem;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-pink);
+            border: 4px solid var(--color-darkest);
+            box-shadow: 0 0 0 3px var(--color-purple);
+        }
+
+        .timeline-item h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--color-pink);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-item .date {
+            color: var(--color-purple);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .timeline-item ul {
+            margin-left: 1.5rem;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--color-dark-purple);
+            padding: 2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 3px solid var(--color-purple);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(178, 86, 129, 0.1) 0%, transparent 70%);
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            top: 0;
+            right: 0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-pink);
+            box-shadow: 0 12px 35px rgba(178, 86, 129, 0.4);
+        }
+
+        .project-card h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--color-pink);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: var(--color-purple);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--color-darkest);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--color-pink);
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-dark-purple);
+            border-radius: 25px;
+            min-width: 200px;
+            transition: all 0.3s ease;
+            border: 3px solid var(--color-purple);
+        }
+
+        .contact-item:hover {
+            border-color: var(--color-pink);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(178, 86, 129, 0.4);
+        }
+
+        .contact-item h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--color-pink);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .contact-item a {
+            color: var(--color-light-pink);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-pink);
+        }
+
+        .contact-item p {
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-dark-purple);
+            border-top: 3px solid var(--color-pink);
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 0.5rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item::before {
+                left: -2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#skills">skills</a></li>
+            <li><a href="#experience">experience</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#contact">contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="sparkle" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 25%; right: 15%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="top: 60%; left: 20%; animation-delay: 2s;"></div>
+        <div class="sparkle" style="top: 70%; right: 25%; animation-delay: 1.5s;"></div>
+        <div class="sparkle" style="top: 40%; left: 80%; animation-delay: 0.5s;"></div>
+        
+        <div class="hero-content">
+            <h1>Kwandile Mavuso</h1>
+            <h2>Data Scientist & Systems Administrator</h2>
+            <p>Transforming complex data into actionable insights | Building intelligent systems that drive business outcomes</p>
+            <a href="#contact" class="cta-button">let's connect</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>about me</h2>
+        <div class="about-content">
+            <p>Analytical and results-oriented Data Scientist with a Computer Engineering background and hands-on experience in statistical modeling, machine learning, and financial data analysis. I specialize in translating complex datasets into actionable insights that drive business outcomes.</p>
+            <p style="margin-top: 1rem;">With expertise in Python, SQL, Power BI, and database systems, I've successfully automated processes, optimized workflows, and implemented data-driven solutions. I thrive in cross-functional, agile environments where I can deliver measurable impact through innovative problem-solving.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>my skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Data Science & Analytics</h3>
+                <ul>
+                    <li>Predictive Modeling</li>
+                    <li>Machine Learning</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Exploratory Data Analysis</li>
+                    <li>Data Visualization</li>
+                    <li>Statistical Methods</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>SQL</li>
+                    <li>R</li>
+                    <li>Java</li>
+                    <li>C/C++</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Databases & Tools</h3>
+                <ul>
+                    <li>Oracle</li>
+                    <li>MongoDB</li>
+                    <li>PostgreSQL</li>
+                    <li>MSSQL</li>
+                    <li>Power BI</li>
+                    <li>Data Integration</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Development</h3>
+                <ul>
+                    <li>Next.js</li>
+                    <li>Flutter</li>
+                    <li>Web Development</li>
+                    <li>Mobile Apps</li>
+                    <li>Process Automation</li>
+                    <li>API Integration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>work experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Assistant Systems Administrator</h3>
+                <div class="date">Swaziland Building Society | 06/2023 – Present</div>
+                <ul>
+                    <li>Designed automated EOD notification system using Python + SQL, improving compliance and reducing operational risk</li>
+                    <li>Optimized core banking system role structure, reducing roles from 120 to 63 and enhancing security governance</li>
+                    <li>Built AI-powered database documentation generator, cutting manual documentation time by 80%</li>
+                    <li>Developed Power BI dashboard for fraud detection and risk analysis</li>
+                    <li>Architected internal directory portal for 250+ staff using Next.js and MongoDB</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Banking Operations</h3>
+                <div class="date">Swaziland Building Society | 06/2023 – 11/2024</div>
+                <ul>
+                    <li>Achieved 99%+ accuracy in high-volume transaction processing</li>
+                    <li>Enhanced customer satisfaction through efficient service delivery</li>
+                    <li>Maintained regulatory compliance across all operations</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Software Development Intern</h3>
+                <div class="date">Eswatini Mobile | 08/2021 – 09/2021</div>
+                <ul>
+                    <li>Designed Java-based stock management application</li>
+                    <li>Automated business processes and reduced operational errors</li>
+                    <li>Improved efficiency through process digitization</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>featured projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>DB Crawler</h3>
+                <p>AI-powered tool that automatically generates comprehensive database documentation using Python and CrewAI, reducing manual documentation time by 80%.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">CrewAI</span>
+                    <span class="tech-tag">Automation</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Fraud Detection Dashboard</h3>
+                <p>Power BI dashboard integrating data from multiple channels for real-time suspicious transaction monitoring and proactive fraud detection.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Data Analytics</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Dressmaker Mobile App</h3>
+                <p>Comprehensive tailor business app with user authentication, client management, and real-time Firebase integration for improved business operations.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Android</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Student Learning System</h3>
+                <p>Desktop application integrating SQL database with Python logic for comprehensive student performance tracking and management.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Desktop App</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Staff Directory Portal</h3>
+                <p>Internal web portal for 250+ staff members built with Next.js and MongoDB, improving cross-department communication and efficiency.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Web Dev</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Traffic Light Simulation</h3>
+                <p>Microprocessor system implementation showcasing embedded programming and system algorithm understanding using C/C++.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C/C++</span>
+                    <span class="tech-tag">Embedded</span>
+                    <span class="tech-tag">Algorithms</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>let's connect</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>Email</h3>
+                <a href="mailto:mkwandilet@gmail.com">mkwandilet@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <a href="tel:+26879723252">+268 79723252</a>
+            </div>
+            <div class="contact-item">
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/in/kwandiletmavuso" target="_blank">kwandiletmavuso</a>
+            </div>
+            <div class="contact-item">
+                <h3>Location</h3>
+                <p>Mbabane, Eswatini</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Kwandile Mavuso • Built with passion and code</p>
+    </footer>
+
+    <script>
+        // Smooth scroll with offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = target.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active state to navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                link.style.background = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.background = 'var(--color-pink)';
+                    link.style.color = 'var(--color-darkest)';
+                }
+            });
+        });
+
+        // Add more sparkles dynamically
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            document.querySelector('.hero').appendChild(sparkle);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            createSparkle();
+        }
+    </script>
+</body>
+</html>
